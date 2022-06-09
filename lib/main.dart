@@ -48,7 +48,7 @@ class _HomeState extends State<Home> {
       ),
     );
 
-    Map trendingresult = await tmdbWithCustomLogs.v3.trending.getTrending();
+    Map trendingresult = await tmdbWithCustomLogs.v3.movies.getPouplar();
     Map topratedresult = await tmdbWithCustomLogs.v3.movies.getTopRated();
     Map upcomingresult = await tmdbWithCustomLogs.v3.movies.getUpcoming();
     Map nowplayingresult = await tmdbWithCustomLogs.v3.movies.getNowPlaying();
@@ -66,18 +66,18 @@ class _HomeState extends State<Home> {
     return Scaffold(
         backgroundColor: Colors.black,
         appBar: AppBar(
-          title: modified_text(text: 'Movie App List'),
+          title: modified_text(text: 'Flutter Movie App'),
           backgroundColor: Colors.transparent,
         ),
         body: ListView(
           children: [
             NowPlayingMovies(
                 nowplaying: nowplayingmovies),
-            TrendingMovies(
-              trending: trendingmovies,
-            ),
             TopRatedMovies(
               toprated: topratedmovies,
+            ),
+            TrendingMovies(
+              trending: trendingmovies,
             ),
             UpcomingMovies(
               upcoming: upcomingmovies,
